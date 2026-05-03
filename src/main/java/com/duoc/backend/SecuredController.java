@@ -9,6 +9,7 @@ public class SecuredController {
 
     @RequestMapping("greetings")
     public String greetings(@RequestParam(value="name", defaultValue="World") String name) {
-        return "Hello {" + name + "}";
+        String sanitizedName = name.replaceAll("[^a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]", "");
+        return "Hello {" + sanitizedName + "}";
     }
 }
